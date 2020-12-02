@@ -2,19 +2,18 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/jondpenton/adventofcode2020/utils"
 )
 
 func main() {
-	data, _ := ioutil.ReadAll(os.Stdin)
-	input := strings.Trim(string(data), "\n")
+	lines := utils.GetLines()
 	validCount := 0
 
-	for _, line := range strings.Split(input, "\n") {
+	for _, line := range lines {
 		arr := strings.Split(line, " ")
 		minMax := strings.Split(arr[0], "-")
 		min, err := strconv.Atoi(minMax[0])

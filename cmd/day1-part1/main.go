@@ -2,19 +2,17 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
 	"strconv"
-	"strings"
+
+	"github.com/jondpenton/adventofcode2020/utils"
 )
 
 func main() {
-	data, _ := ioutil.ReadAll(os.Stdin)
-	input := strings.Trim(string(data), "\n")
+	lines := utils.GetLines()
 	var nums []int
 
-	for _, x := range strings.Split(input, "\n") {
+	for _, x := range lines {
 		num, err := strconv.Atoi(x)
 
 		if err != nil {
