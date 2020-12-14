@@ -126,10 +126,28 @@ async function day4Part2() {
     if (
       !(passport.birthYear! >= 1920 && passport.birthYear! <= 2002) ||
       !(passport.issueYear! >= 2010 && passport.issueYear! <= 2020) ||
-      !(passport.expirationYear! >= 2020 && passport.expirationYear! <= 2030) || !(
-        (passport.height!.measurement === 'cm' && passport.height!.amount >= 150 && passport.height!.amount <= 193) || (
-          
-        )
+      !(passport.expirationYear! >= 2020 && passport.expirationYear! <= 2030) ||
+      !(
+        (passport.height!.measurement === 'cm' &&
+          passport.height!.amount >= 150 &&
+          passport.height!.amount <= 193) ||
+        (passport.height!.measurement === 'in' &&
+          passport.height!.amount >= 59 &&
+          passport.height!.amount <= 76)
+      ) ||
+      !(
+        passport.hairColor![0] === '#' &&
+        passport
+          .hairColor!.slice(1)
+          .split('')
+          .every((character) => /[0-9a-f]/.test(character))
+      ) ||
+      !['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(
+        passport.eyeColor!
+      ) ||
+      !(
+        passport.passportID!.length === 9 &&
+        !Number.isNaN(Number(passport.passportID!))
       )
     ) {
       continue
